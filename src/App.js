@@ -16,6 +16,7 @@ function App() {
           <ol>
            {list.map((element, id) => <li key={id}><Link to={`/element/${id}`}>{element}</Link></li>)}
           </ol>
+          <Link to={`/element/${list.length}`}>Add Element</Link>
         </Route>
         <Route path="/element/:id">
           <ElementEditor list={list} setList={setList} />
