@@ -3,13 +3,20 @@ import React, { useState, useContext } from "react"
 import Requack from "./requack"
 
 export const Provider = ({store, children}) => {
-    const [state, setState] = useState(Requack.initialState)
-    return (<Requack.context.Provider value={state}>{children}</Requack.context.Provider>)
+    const stateAndSetState = useState(Requack.initialState)
+    return (<Requack.context.Provider value={stateAndSetState}>{children}</Requack.context.Provider>)
 }
 
 export const connect = (mapStateToProps, mapDispatchToProps) =>
     (Component) =>
         (props) => {
-            const state = useContext(Requack.context)
-            return <Component {...mapStateToProps(state)}>{props.children}</Component>
+            const [state, setState] = useContext(Requack.context)
+            const dispatchProps = {}
+            Object.entries(mapDispatchToProps).forEach(([actionName, actionConstructor]) => {
+                dispatchProps[actionName] = (...actionConstructorArgs) => {
+                    const action = actionConstructor(...actionConstructorArgs)
+                    setState(Requack.reducer(state, action))
+                }
+            })
+            return <Component {...mapStateToProps(state)} {...dispatchProps}>{props.children}</Component>
         }
