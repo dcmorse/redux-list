@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore } from "../requack/redux";
 import reducer from "./reducer";
 
 export const configureStore = (initialState) => 

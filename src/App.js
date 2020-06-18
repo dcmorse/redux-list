@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import ElementEditor from "./ElementEditor"
 import createStore from "./redux/store"
-import { Provider, connect } from "react-redux"
+import { Provider, connect } from "./requack/react-redux"
 import Menu from "./menu"
 import { actions } from "./redux/actions"
 
