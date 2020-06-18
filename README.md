@@ -1,3 +1,13 @@
+# redux-list
+
+This was a learning project to work through Redux. If you look through the git log, you'll see
+
+1. the program written using the `useState` hook
+2. the program rewritten using Redux
+3. the program rerewritten using Requack, a Redux subset implemented within this project
+
+# Boilerplate create-react-app doc below here
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
